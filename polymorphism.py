@@ -20,4 +20,4 @@ class Square:
         return str(self.size)+" "+str(self.getArea())
 my_Square=Square(8)
 my_Square.getArea()
-print(my_Square)
+rint(my_Square)
