@@ -1,0 +1,14 @@
+$ git push -f  origin master
+Counting objects: 23, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (22/22), done.
+Writing objects: 100% (23/23), 160.75 KiB | 5.95 MiB/s, done.
+Total 23 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/duanyiting2018/learning_python.git
+ + 74af679...aefa88a master -> master (forced update)
+
+lenovo@duanzhihua MINGW64 /f/duanyiting2018_GitHub/learn_python (master)
+$ git push -u  origin master
+Everything up-to-date
+Branch 'master' set up to track remote branch 'master' from 'origin'.
