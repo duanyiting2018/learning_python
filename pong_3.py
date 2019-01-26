@@ -13,10 +13,12 @@ class MyBallClass(pygame.sprite.Sprite):
         self.rect=self.rect.move(self.speed)
         if self.rect.left<0 or self.rect.right>screen.get_width():
             self.speed[0]=-self.speed[0]
+            hit.play()
         if self.rect.top<=0:
             self.speed[1]=-self.speed[1]
             score+=1
             surf=font.render(str(score),1,(random.randint(100,200),random.randint(100,200),random.randint(100,200)))
+            hit2.play()
 class WackyPadClass(pygame.sprite.Sprite):
     def __init__(self,loc2):
         pygame.sprite.Sprite.__init__(self)
@@ -28,8 +30,7 @@ class WackyPadClass(pygame.sprite.Sprite):
 pygame.init()
 screen=pygame.display.set_mode([700,700])
 clock=pygame.time.Clock()
-a=random.randint(1,10)
-ball_s=[a,a]
+ball_s=[10,10]
 myball=MyBallClass('wackyball.bmp',[100,100],ball_s)
 balgro=pygame.sprite.Group(myball)
 pad=WackyPadClass([100,400])
@@ -39,6 +40,20 @@ surf=font.render(str(score),1,(random.randint(100,200),random.randint(100,200),r
 pos=[10,10]
 done=False
 running=True
+pygame.mixer.init()
+pygame.mixer.music.load("bg_music.mp3")
+pygame.mixer.music.set_volume(0.3)
+pygame.mixer.music.play(-5)
+hit=pygame.mixer.Sound("hit_paddle.wav")
+hit.set_volume(0.4)
+hit2=pygame.mixer.Sound("get_point.wav")
+hit2.set_volume(0.2)
+hit3=pygame.mixer.Sound("splat.wav")
+hit3.set_volume(0.6)
+hit4=pygame.mixer.Sound("new_life.wav")
+hit4.set_volume(0.5)
+hit5=pygame.mixer.Sound("game_over.wav")
+hit5.set_volume(0.6)
 while running:
     clock.tick(35)
     screen.fill([255,255,255])
@@ -52,6 +67,7 @@ while running:
                     pad.rect.right=pad.rect.right+50
     if pygame.sprite.spritecollide(pad,balgro,False):
         myball.speed[1]=-5
+        hit.play()
     myball.move()
     if not done:
         screen.blit(myball.image,myball.rect)
@@ -62,8 +78,12 @@ while running:
             screen.blit(myball.image,[width-40*i,20])
         pygame.display.flip()
     if myball.rect.top>=screen.get_rect().bottom:
+        if not done:
+            hit3.play()
         lives-=1
         if lives==0:
+            if not done:
+                hit5.play()
             text1="GAME OVER"
             text2="YOUR SCORE:"+str(score)
             font1=pygame.font.Font(None,70)
@@ -76,7 +96,11 @@ while running:
                         ft2.get_width()/2,400])
             pygame.display.flip()
             done=True
+            myball.speed[1]=0
+            myball.speed[0]=0
+            pygame.mixer.music.fadeout(2000)
         else:
             pygame.time.delay(1000)
+            hit4.play()
             myball.rect.topleft=[50,50]
 pygame.quit()
