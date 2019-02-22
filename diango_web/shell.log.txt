@@ -1,0 +1,213 @@
+Microsoft Windows [版本 10.0.16299.967]
+(c) 2017 Microsoft Corporation。保留所有权利。
+
+C:\Users\lenovo>cd F:\duanyiting2018_GitHub\learn_python\diango_web\mysite
+
+C:\Users\lenovo>f:
+
+F:\duanyiting2018_GitHub\learn_python\diango_web\mysite>python manage.py shell
+Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.2.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from polls.models import Choice, Question
+   ...: Question.objects.all()
+   ...: Question.objects.filter(id=1)
+Out[1]: <QuerySet [<Question: What time is it now?>]>
+
+In [2]: from django.utils import timezone
+
+In [3]: current_year = timezone.now().year
+   ...: Question.objects.get(pub_date__year=current_year)
+Out[3]: <Question: What time is it now?>
+
+In [4]: Question.objects.get(pk=1)
+Out[4]: <Question: What time is it now?>
+
+In [5]: q.was_published_recently()
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-5-e228ae8692a6> in <module>
+----> 1 q.was_published_recently()
+
+NameError: name 'q' is not defined
+
+In [6]: q = Question.objects.get(pk=1)
+
+In [7]: q.was_published_recently()
+Out[7]: False
+
+In [8]: q.choice_set.create(choice_text='a rabbit==a pig?', votes=0)
+Out[8]: <Choice: a rabbit==a pig?>
+
+In [9]: q.choice_set.create(choice_text='how are you?', votes=0)
+Out[9]: <Choice: how are you?>
+
+In [10]: q.choice_set.count()
+Out[10]: 2
+
+In [11]: c = q.choice_set.create(choice_text='apple big or small?', votes=0)
+
+In [12]: quit()
+
+F:\duanyiting2018_GitHub\learn_python\diango_web\mysite>python manage.py createsuperuser
+Username (leave blank to use 'lenovo'): admin
+Email address: 1036179833@qq.com
+Password:
+Password (again):
+This password is too short. It must contain at least 8 characters.
+This password is too common.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+
+F:\duanyiting2018_GitHub\learn_python\diango_web\mysite>python manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 22, 2019 - 20:20:17
+Django version 2.1.7, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[22/Feb/2019 20:20:22] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1819
+[22/Feb/2019 20:20:22] "GET /static/admin/css/login.css HTTP/1.1" 304 0
+[22/Feb/2019 20:20:22] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[22/Feb/2019 20:20:22] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[22/Feb/2019 20:20:23] "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+[22/Feb/2019 20:20:23] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+[22/Feb/2019 20:20:23] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+[22/Feb/2019 20:20:35] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[22/Feb/2019 20:20:35] "GET /admin/ HTTP/1.1" 200 3042
+[22/Feb/2019 20:20:35] "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+[22/Feb/2019 20:20:35] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[22/Feb/2019 20:20:35] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[22/Feb/2019 20:20:35] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+[22/Feb/2019 20:20:47] "GET /admin/auth/user/add/ HTTP/1.1" 200 5655
+[22/Feb/2019 20:20:47] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:20:47] "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+[22/Feb/2019 20:20:47] "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+[22/Feb/2019 20:20:47] "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+[22/Feb/2019 20:20:47] "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+[22/Feb/2019 20:20:47] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+[22/Feb/2019 20:20:47] "GET /static/admin/js/core.js HTTP/1.1" 200 7135
+[22/Feb/2019 20:20:47] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+[22/Feb/2019 20:20:47] "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+[22/Feb/2019 20:20:47] "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+[22/Feb/2019 20:20:47] "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+[22/Feb/2019 20:20:47] "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+[22/Feb/2019 20:20:47] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+[22/Feb/2019 20:21:09] "POST /admin/auth/user/add/ HTTP/1.1" 200 5906
+[22/Feb/2019 20:21:09] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:22:08] "POST /admin/auth/user/add/ HTTP/1.1" 200 5815
+[22/Feb/2019 20:22:09] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:22:34] "POST /admin/auth/user/add/ HTTP/1.1" 302 0
+[22/Feb/2019 20:22:35] "GET /admin/auth/user/add/ HTTP/1.1" 200 5858
+[22/Feb/2019 20:22:35] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:22:35] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+[22/Feb/2019 20:22:44] "GET /admin/logout/ HTTP/1.1" 200 1207
+[22/Feb/2019 20:22:48] "GET /admin/ HTTP/1.1" 302 0
+[22/Feb/2019 20:22:48] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1819
+[22/Feb/2019 20:23:07] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 1978
+[22/Feb/2019 20:23:21] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 1978
+[22/Feb/2019 20:23:37] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[22/Feb/2019 20:23:37] "GET /admin/ HTTP/1.1" 200 3350
+[22/Feb/2019 20:23:47] "GET /admin/auth/user/ HTTP/1.1" 200 7025
+[22/Feb/2019 20:23:47] "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+[22/Feb/2019 20:23:47] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:23:47] "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+[22/Feb/2019 20:23:47] "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+[22/Feb/2019 20:23:47] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+[22/Feb/2019 20:23:47] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+[22/Feb/2019 20:24:32] "GET /admin/ HTTP/1.1" 200 3350
+[22/Feb/2019 20:24:36] "GET /admin/auth/user/ HTTP/1.1" 200 7025
+[22/Feb/2019 20:24:36] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:24:51] "POST /admin/auth/user/ HTTP/1.1" 200 3331
+[22/Feb/2019 20:24:51] "GET /static/admin/js/cancel.js HTTP/1.1" 200 410
+[22/Feb/2019 20:24:53] "POST /admin/auth/user/ HTTP/1.1" 302 0
+[22/Feb/2019 20:24:53] "GET /admin/auth/user/ HTTP/1.1" 200 6732
+[22/Feb/2019 20:24:53] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:24:57] "GET /admin/auth/user/add/ HTTP/1.1" 200 5655
+[22/Feb/2019 20:24:57] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:25:17] "POST /admin/auth/user/add/ HTTP/1.1" 302 0
+[22/Feb/2019 20:25:17] "GET /admin/auth/user/add/ HTTP/1.1" 200 5858
+[22/Feb/2019 20:25:17] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:25:20] "GET /admin/auth/user/add/ HTTP/1.1" 200 5655
+[22/Feb/2019 20:25:23] "GET /admin/logout/ HTTP/1.1" 200 1207
+[22/Feb/2019 20:25:25] "GET /admin/ HTTP/1.1" 302 0
+[22/Feb/2019 20:25:25] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1819
+[22/Feb/2019 20:25:36] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 1978
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 22, 2019 - 20:27:31
+Django version 2.1.7, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 22, 2019 - 20:27:39
+Django version 2.1.7, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[22/Feb/2019 20:28:02] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 1978
+[22/Feb/2019 20:28:14] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[22/Feb/2019 20:28:14] "GET /admin/ HTTP/1.1" 200 4541
+[22/Feb/2019 20:28:14] "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+[22/Feb/2019 20:28:21] "GET /admin/polls/question/ HTTP/1.1" 200 4360
+[22/Feb/2019 20:28:21] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:28:23] "GET /admin/ HTTP/1.1" 200 4541
+[22/Feb/2019 20:28:25] "GET /admin/polls/question/add/ HTTP/1.1" 200 4840
+[22/Feb/2019 20:28:25] "GET /static/admin/js/calendar.js HTTP/1.1" 200 7777
+[22/Feb/2019 20:28:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:28:25] "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 20281
+[22/Feb/2019 20:28:25] "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+[22/Feb/2019 20:28:25] "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+[22/Feb/2019 20:30:17] "POST /admin/polls/question/add/ HTTP/1.1" 302 0
+[22/Feb/2019 20:30:17] "GET /admin/polls/question/add/ HTTP/1.1" 200 5092
+[22/Feb/2019 20:30:17] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:30:17] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+[22/Feb/2019 20:30:17] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+[22/Feb/2019 20:30:22] "GET /admin/polls/question/add/ HTTP/1.1" 200 4840
+[22/Feb/2019 20:30:34] "GET /admin/ HTTP/1.1" 200 4861
+[22/Feb/2019 20:30:39] "GET /admin/polls/question/2/change/ HTTP/1.1" 200 5166
+[22/Feb/2019 20:30:39] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:30:42] "GET /admin/ HTTP/1.1" 200 4861
+[22/Feb/2019 20:30:52] "GET /admin/auth/user/3/change/ HTTP/1.1" 200 14388
+[22/Feb/2019 20:30:52] "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 5755
+[22/Feb/2019 20:30:52] "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 12712
+[22/Feb/2019 20:30:52] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:30:52] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[22/Feb/2019 20:30:52] "GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+[22/Feb/2019 20:30:52] "GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+[22/Feb/2019 20:30:52] "GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+[22/Feb/2019 20:31:08] "GET /admin/auth/user/3/delete/ HTTP/1.1" 200 3180
+[22/Feb/2019 20:31:10] "POST /admin/auth/user/3/delete/ HTTP/1.1" 302 0
+[22/Feb/2019 20:31:10] "GET /admin/auth/user/ HTTP/1.1" 200 6754
+[22/Feb/2019 20:31:10] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:31:14] "GET /admin/auth/user/3/delete/ HTTP/1.1" 302 0
+[22/Feb/2019 20:31:14] "GET /admin/ HTTP/1.1" 200 5259
+[22/Feb/2019 20:31:14] "GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+[22/Feb/2019 20:31:18] "GET /admin/auth/user/3/change/ HTTP/1.1" 302 0
+[22/Feb/2019 20:31:18] "GET /admin/ HTTP/1.1" 200 5259
+[22/Feb/2019 20:31:18] "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+[22/Feb/2019 20:31:18] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+[22/Feb/2019 20:31:22] "GET /admin/polls/question/2/change/ HTTP/1.1" 200 5166
+[22/Feb/2019 20:31:22] "GET /admin/jsi18n/ HTTP/1.1" 200 3185
+[22/Feb/2019 20:31:25] "GET /admin/ HTTP/1.1" 200 5098
+[
