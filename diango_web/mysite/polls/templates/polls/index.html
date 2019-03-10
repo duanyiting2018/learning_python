@@ -1,0 +1,18 @@
+
+<!-- saved from url=(0028)http://127.0.0.1:8000/polls/ -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>欢迎您，这里是duanyiting网页！如果你看到的话，你已成功了!恭喜你！！！
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>现在没有题目可以做。</p>
+{% endif %}
+</body>
+</html>

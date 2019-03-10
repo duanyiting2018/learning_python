@@ -1,0 +1,9 @@
+# learning_c
+
+
+$  echo "# learning_c" >> README.md
+git commit -m "first commit"
+git remote add origin https://dytgithub.com/duanyiting2018/learning_c.git
+git push -u origin master
+ 
+windows中的凭据信息修改：控制面板--控制面板\所有控制面板项\凭据管理器

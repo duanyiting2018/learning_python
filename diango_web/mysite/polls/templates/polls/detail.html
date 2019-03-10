@@ -1,0 +1,16 @@
+
+<!-- saved from url=(0028)http://127.0.0.1:8000/polls/ -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>问题的详细页面：
+{{ question }}
+<h1>{{ question.question_text }}|||</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>

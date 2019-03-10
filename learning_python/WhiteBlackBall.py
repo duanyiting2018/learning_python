@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
-class WhiteBlackBall :
+class WhiteBlackBall:
     def __init__(self,white_Number,black_Number):
         self.white_Number = white_Number
         self.black_Number = black_Number
@@ -44,5 +44,3 @@ for i in range(1,198):
         print("第{}次随机取 {}个白球{}个黑球，此时的白球个数{}，黑球个数{}"
               .format(i,take_white_number,take_black_bumber,
               whiteBlackBall.white_Number,whiteBlackBall.black_Number))
-        
-    
