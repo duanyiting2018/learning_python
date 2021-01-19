@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ch-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>JS示例</title>
+    </head>
+    <body>
+        被除数:<input id="1"type="text"name="number1" /><br />
+        除数:<input id="2"type="text"name="number2" /><br />
+        商:<input id="3"type="text"name="number3" /><br />
+        <input type="button"value="求商"onlick="div()" /><br />
+        <script type="text/javascript">
+        function div(){
+            var input1=document.getElementById("1");
+            var input2=document.getElementsByName("number2")[0];
+            var input3=document.getElementsById("3");
+            var num1=input1.value;
+            var num2=input2.value;
+            var shang=parseFloat(num1) / parseFloat(num2);
+            input3.value=shang;
+        }
+        </script>
+    </body>
+</html>
